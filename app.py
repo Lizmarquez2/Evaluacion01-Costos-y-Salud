@@ -29,8 +29,8 @@ menu = st.sidebar.selectbox(
 # 1. HOME
 # =========================================================
 if menu == "Home":
-    st.title("📊 Especialización en Python for Analytics")
-    st.subheader("Modulo 1 - Python Fundamentals | Proyecto Aplicado en Streamlit")
+    st.title("📊 Ev_01 Especialización en Python for Analytics")
+    st.subheader("Proyecto aplicando Python Fundamentals")
     
     st.markdown("---")
     
