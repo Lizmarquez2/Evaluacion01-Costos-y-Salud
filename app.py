@@ -350,9 +350,9 @@ elif menu == "Ejercicio 3":
                 st.success("¡Cálculo ejecutado exitosamente!")
                 
                 col_r1, col_r2, col_r3 = st.columns(3)
-                col_r1.metric("Margen Contribución", f"${res.get('margen_contribucion_unitario', 0):,.2f}")
+                col_r1.metric("Margen Contribución", f"S/.{res.get('margen_contribucion_unitario', 0):,.2f}")
                 col_r2.metric("Punto Equilibrio (Unid.)", f"{res.get('punto_equilibrio_unidades', 0):,.2f}")
-                col_r3.metric("Punto Equilibrio (Ventas)", f"${res.get('punto_equilibrio_ventas', 0):,.2f}")
+                col_r3.metric("Punto Equilibrio (Ventas)", f"S/.{res.get('punto_equilibrio_ventas', 0):,.2f}")
                 
                 st.session_state.historico_func.append({
                     "Función": funcion_seleccionada,
