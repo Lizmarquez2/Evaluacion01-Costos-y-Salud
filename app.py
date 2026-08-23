@@ -55,15 +55,17 @@ st.markdown("""
         font-weight: 500;
     }
     
-    /* Personalización del cuadro de Información General (st.info) */
-    [data-testid="stNotification"] {
+    /* Personalización correcta del cuadro de Información General (st.info) */
+    [data-testid="stAlert"] {
         background-color: #FFB5C0 !important;
         border: 1px solid #FF5C52 !important;
     }
-    [data-testid="stNotification"] p, 
-    [data-testid="stNotification"] span, 
-    [data-testid="stNotification"] strong, 
-    [data-testid="stNotification"] li {
+    
+    [data-testid="stAlert"] [data-testid="stMarkdownContainer"], 
+    [data-testid="stAlert"] p, 
+    [data-testid="stAlert"] span, 
+    [data-testid="stAlert"] strong, 
+    [data-testid="stAlert"] li {
         color: #550000 !important;
     }
     
