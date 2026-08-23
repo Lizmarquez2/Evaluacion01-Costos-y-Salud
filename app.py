@@ -15,7 +15,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilos CSS personalizados con la paleta solicitada y tipografía Quicksand / Prata
+# Estilos CSS personalizados con los ajustes solicitados
 st.markdown("""
     <style>
     /* Importar tipografías Google Fonts (Quicksand y Prata) */
@@ -31,12 +31,12 @@ st.markdown("""
         background-color: #FFF0F3;
     }
     
-    /* Estilo para los contenedores / tarjetas */
+    /* Estilo para los contenedores generales */
     div.stMarkdown, div.stForm {
         border-radius: 8px;
     }
     
-    /* Personalización de la barra lateral (Rosa oscuro suave) */
+    /* Personalización de la barra lateral */
     [data-testid="stSidebar"] {
         background-color: #FFE5EC;
         border-right: 1px solid #FFC5D3;
@@ -53,6 +53,18 @@ st.markdown("""
     p, span, label {
         color: #4A1525;
         font-weight: 500;
+    }
+    
+    /* Personalización del cuadro de Información General (st.info) */
+    [data-testid="stNotification"] {
+        background-color: #FF746C !important;
+        border: 1px solid #FF5C52 !important;
+    }
+    [data-testid="stNotification"] p, 
+    [data-testid="stNotification"] span, 
+    [data-testid="stNotification"] strong, 
+    [data-testid="stNotification"] li {
+        color: #550000 !important;
     }
     
     /* Tarjetas de métricas personalizadas con acento Burdeos */
@@ -73,19 +85,19 @@ st.markdown("""
         font-weight: 700;
     }
     
-    /* Botones con estilo ejecutivo */
-    .stButton>button {
+    /* Botones con estilo ejecutivo y letra Rosa Claro (#FFB5C0) */
+    .stButton>button, div.stFormSubmitButton>button {
         background-color: #C11C84;
-        color: #FFFFFF;
+        color: #FFB5C0 !important;
         border-radius: 8px;
         border: none;
-        font-weight: 600;
+        font-weight: 700;
         transition: all 0.3s ease;
     }
     
-    .stButton>button:hover {
+    .stButton>button:hover, div.stFormSubmitButton>button:hover {
         background-color: #660033;
-        color: #FFFFFF;
+        color: #FFFFFF !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -329,7 +341,7 @@ elif menu == "Ejercicio 3":
                 st.success("¡Cálculo ejecutado exitosamente!")
                 
                 col_r1, col_r2 = st.columns(2)
-                col_r1.metric("IMC Calculado", f"{res.get('imc', 0):.2f}")
+                col_r1.metric("IMC Calculado", f"{res.get('imc', 0):,.2f}")
                 col_r2.metric("Clasificación", f"{res.get('clasificacion', '')}")
                 
                 st.session_state.historico_func.append({
