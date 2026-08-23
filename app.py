@@ -208,12 +208,12 @@ elif menu == "Ejercicio 1":
             st.rerun()
 
 # =========================================================
-# 3. EJERCICIO 2 - Registro con NumPy, arrays y DataFrame
+# 3. EJERCICIO 2 - Registro con NumPy, DataFrame, Agregar y Actualizar
 # =========================================================
 elif menu == "Ejercicio 2":
     st.title("📦 Ejercicio 2: Registro con NumPy y DataFrame")
     st.markdown("""
-    Optimización de operaciones aritméticas usando arreglos de **NumPy** convertidos a DataFrames de Pandas.
+    Optimización de operaciones aritméticas usando arreglos de **NumPy** convertidos a DataFrames de Pandas, permitiendo agregar y actualizar registros.
     """)
 
     if "datos_numpy" not in st.session_state:
@@ -224,27 +224,47 @@ elif menu == "Ejercicio 2":
             "cantidades": []
         }
 
-    with st.form("form_numpy"):
-        c1, c2, c3, c4 = st.columns(4)
-        with c1:
-            prod = st.text_input("Nombre del producto/servicio")
-        with c2:
-            cat = st.selectbox("Categoría", ["Farmacia", "Laboratorio", "Cirugía", "Administrativo"])
-        with c3:
-            precio = st.number_input("Precio unitario ($)", min_value=0.0, step=1.0)
-        with c4:
-            cantidad = st.number_input("Cantidad", min_value=1, step=1)
-            
-        btn_np = st.form_submit_button("Registrar en Array")
-        if btn_np:
-            if prod.strip():
-                st.session_state.datos_numpy["productos"].append(prod)
-                st.session_state.datos_numpy["categorias"].append(cat)
-                st.session_state.datos_numpy["precios"].append(precio)
-                st.session_state.datos_numpy["cantidades"].append(cantidad)
-                st.success("Registro añadido con éxito.")
-            else:
-                st.error("El nombre del producto no puede estar vacío.")
+    tab_agregar_np, tab_actualizar_np = st.tabs(["Agregar Registro", "Actualizar Registro"])
+
+    with tab_agregar_np:
+        with st.form("form_numpy"):
+            c1, c2, c3, c4 = st.columns(4)
+            with c1:
+                prod = st.text_input("Nombre del producto/servicio")
+            with c2:
+                cat = st.selectbox("Categoría", ["Farmacia", "Laboratorio", "Cirugía", "Administrativo"])
+            with c3:
+                precio = st.number_input("Precio unitario (S/.)", min_value=0.0, step=1.0)
+            with c4:
+                cantidad = st.number_input("Cantidad", min_value=1, step=1)
+                
+            btn_np = st.form_submit_button("Registrar en Array")
+            if btn_np:
+                if prod.strip():
+                    st.session_state.datos_numpy["productos"].append(prod)
+                    st.session_state.datos_numpy["categorias"].append(cat)
+                    st.session_state.datos_numpy["precios"].append(precio)
+                    st.session_state.datos_numpy["cantidades"].append(cantidad)
+                    st.success("Registro añadido con éxito.")
+                else:
+                    st.error("El nombre del producto no puede estar vacío.")
+
+    with tab_actualizar_np:
+        if st.session_state.datos_numpy["productos"]:
+            with st.form("form_update_numpy"):
+                prod_a_editar = st.selectbox("Seleccione producto a actualizar", st.session_state.datos_numpy["productos"])
+                idx_actual = st.session_state.datos_numpy["productos"].index(prod_a_editar)
+                
+                nuevo_precio = st.number_input("Nuevo Precio Unitario (S/.)", min_value=0.0, value=float(st.session_state.datos_numpy["precios"][idx_actual]), step=1.0)
+                nueva_cantidad = st.number_input("Nueva Cantidad", min_value=1, value=int(st.session_state.datos_numpy["cantidades"][idx_actual]), step=1)
+                
+                btn_upd_np = st.form_submit_button("Actualizar Datos")
+                if btn_upd_np:
+                    st.session_state.datos_numpy["precios"][idx_actual] = nuevo_precio
+                    st.session_state.datos_numpy["cantidades"][idx_actual] = nueva_cantidad
+                    st.success(f"¡El producto '{prod_a_editar}' fue actualizado correctamente!")
+        else:
+            st.info("No hay registros disponibles para actualizar.")
 
     if st.session_state.datos_numpy["productos"]:
         arr_precios = np.array(st.session_state.datos_numpy["precios"])
@@ -259,8 +279,13 @@ elif menu == "Ejercicio 2":
             "Total Calculado": arr_totales
         })
 
+        # Mostrar dataframe con formato estricto en Soles (S/.)
+        df_reg_display = df_registros.copy()
+        df_reg_display["Precio Unitario"] = df_reg_display["Precio Unitario"].apply(lambda x: f"S/. {x:,.2f}")
+        df_reg_display["Total Calculado"] = df_reg_display["Total Calculado"].apply(lambda x: f"S/. {x:,.2f}")
+
         st.markdown("### 📊 Tabla Consolidada")
-        st.dataframe(df_registros, use_container_width=True)
+        st.dataframe(df_reg_display, use_container_width=True)
         
         if st.button("Reiniciar Registros"):
             st.session_state.datos_numpy = {"productos": [], "categorias": [], "precios": [], "cantidades": []}
