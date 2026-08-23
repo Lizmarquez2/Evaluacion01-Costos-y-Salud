@@ -10,7 +10,7 @@ import libreria_clases_proyecto1 as lib_class
 # CONFIGURACIÓN DE LA PÁGINA
 # =========================================================
 st.set_page_config(
-    page_title="Evaluación Modulo 01 - Fundamentos de Programación",
+    page_title="Evaluación Modulo 01 - Python Fundamentals",
     page_icon="📊",
     layout="wide"
 )
@@ -30,7 +30,7 @@ menu = st.sidebar.selectbox(
 # =========================================================
 if menu == "Home":
     st.title("📊 Especialización en Python for Analytics")
-    st.subheader("Modulo 1 - Fundamentos de Programación | Proyecto Aplicado en Streamlit")
+    st.subheader("Modulo 1 - Python Fundamentals | Proyecto Aplicado en Streamlit")
     
     st.markdown("---")
     
@@ -38,8 +38,8 @@ if menu == "Home":
     with col1:
         st.markdown("""
         ### Descripción del Proyecto
-        Esta aplicación interactiva integra los conceptos fundamentales aprendidos durante el módulo, 
-        incluyendo variables, estructuras de datos, control de flujo, funciones y programación.
+        Esta aplicación interactiva integra los conceptos fundamentales aprendidos durante el módulo, que
+        incluye variables, estructuras de datos, control de flujo, funciones y programación.
         
         El sistema permite simular operaciones prácticas organizadas en módulos interactivos diseñados 
         para facilitar el análisis de datos y la toma de decisiones.
@@ -56,7 +56,8 @@ if menu == "Home":
     with col2:
         st.info("""
         **Información General:**
-        * **Alumna:** Liz E. Marquez Panuera
+        * **Alumna:** Liz Esthefanny Marquez Panuera
+        * **Modulo:** Python Fundamentals
         * **Año:** 2026
         """)
 
