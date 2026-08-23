@@ -7,7 +7,7 @@ import libreria_funciones_proyecto1 as lib_func
 import libreria_clases_proyecto1 as lib_class
 
 # =========================================================
-# CONFIGURACIÓN DE LA PÁGINA Y ESTILOS EJECUTIVOS
+# CONFIGURACIÓN DE LA PÁGINA Y ESTILOS EJECUTIVOS (ROSA / BURDEOS)
 # =========================================================
 st.set_page_config(
     page_title="Proyecto 1 - Python Fundamentals",
@@ -15,36 +15,77 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilos CSS personalizados (Diseño Ejecutivo / Pasteles Tenues / Tipografía)
+# Estilos CSS personalizados con la paleta solicitada y tipografía Quicksand / Prata
 st.markdown("""
     <style>
-    /* Importar fuente moderna tipo Inter/Sans-serif */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    /* Importar tipografías Google Fonts (Quicksand y Prata) */
+    @import url('https://fonts.googleapis.com/css2?family=Prata&family=Quicksand:wght@400;500;600;700&display=swap');
     
+    /* Tipografía general Sans Serif (Quicksand) */
     html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Quicksand', sans-serif;
     }
     
-    /* Fondo principal sutil */
+    /* Fondo general de la aplicación: Rosa pastel */
     .stApp {
-        background-color: #F8FFA;
+        background-color: #FFF0F3;
     }
     
-    /* Estilo para los contenedores / tarjetas (efecto pastel tenue) */
+    /* Estilo para los contenedores / tarjetas */
     div.stMarkdown, div.stForm {
         border-radius: 8px;
     }
     
-    /* Personalización de la barra lateral */
+    /* Personalización de la barra lateral (Rosa oscuro suave) */
     [data-testid="stSidebar"] {
-        background-color: #F0F4F8;
-        border-right: 1px solid #E2E8F0;
+        background-color: #FFE5EC;
+        border-right: 1px solid #FFC5D3;
     }
     
-    /* Títulos principales */
+    /* Títulos principales con tipografía Prata y color Rosa Oscuro (#C11C84) */
     h1, h2, h3 {
-        color: #1E3A8A;
+        font-family: 'Prata', serif;
+        color: #C11C84 !important;
         font-weight: 700;
+    }
+    
+    /* Textos y etiquetas generales */
+    p, span, label {
+        color: #4A1525;
+        font-weight: 500;
+    }
+    
+    /* Tarjetas de métricas personalizadas con acento Burdeos */
+    [data-testid="stMetric"] {
+        background-color: #FFFFFF;
+        border: 1px solid #FFC5D3;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    [data-testid="stMetricLabel"] {
+        color: #660033 !important;
+        font-weight: 600;
+    }
+    
+    [data-testid="stMetricValue"] {
+        color: #C11C84 !important;
+        font-weight: 700;
+    }
+    
+    /* Botones con estilo ejecutivo */
+    .stButton>button {
+        background-color: #C11C84;
+        color: #FFFFFF;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .stButton>button:hover {
+        background-color: #660033;
+        color: #FFFFFF;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -293,7 +334,7 @@ elif menu == "Ejercicio 3":
                 
                 st.session_state.historico_func.append({
                     "Función": funcion_seleccionada,
-                    "Resultado Principal": f"IMC: {res.get('imc', 0):.2f} ({res.get('clasificacion', '')})"
+                    "Resultado Principal": f"IMC: {res.get('imc', 0):,.2f} ({res.get('clasificacion', '')})"
                 })
             except Exception as e:
                 st.error(f"Error en el cálculo: {e}")
