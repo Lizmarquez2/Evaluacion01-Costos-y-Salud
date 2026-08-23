@@ -243,7 +243,6 @@ elif menu == "Ejercicio 3":
                 res = lib_func.calcular_costo_unitario_total(mat, mo, ci, unidades)
                 st.success("¡Cálculo ejecutado exitosamente!")
                 
-                # Desplegar los resultados de forma limpia en tarjetas métricas
                 col_r1, col_r2 = st.columns(2)
                 col_r1.metric("Costo Total", f"${res.get('costo_total', 0):,.2f}")
                 col_r2.metric("Costo Unitario", f"${res.get('costo_unitario', 0):,.2f}")
@@ -273,7 +272,7 @@ elif menu == "Ejercicio 3":
                 
                 st.session_state.historico_func.append({
                     "Función": funcion_seleccionada,
-                    "Resultado Principal": f"Equilibrio Unidades: {res.get('punto_equilibrio_unidades', 0):,.2f}"
+                    "Resultado Principal": f"Punto de Equilibrio en Unidades: {res.get('punto_equilibrio_unidades', 0):,.2f}"
                 })
             except Exception as e:
                 st.error(f"Error en el cálculo: {e}")
