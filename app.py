@@ -57,7 +57,7 @@ st.markdown("""
     
     /* Personalización del cuadro de Información General (st.info) */
     [data-testid="stNotification"] {
-        background-color: #FF746C !important;
+        background-color: #FFB5C0 !important;
         border: 1px solid #FF5C52 !important;
     }
     [data-testid="stNotification"] p, 
@@ -76,7 +76,7 @@ st.markdown("""
     }
     
     [data-testid="stMetricLabel"] {
-        color: #660033 !important;
+        color: #E83256 !important; 
         font-weight: 600;
     }
     
@@ -85,9 +85,8 @@ st.markdown("""
         font-weight: 700;
     }
     
-    /* Botones con estilo ejecutivo y letra Rosa Claro (#FFB5C0) */
     .stButton>button, div.stFormSubmitButton>button {
-        background-color: #C11C84;
+        background-color: #d971b2;
         color: #FFB5C0 !important;
         border-radius: 8px;
         border: none;
