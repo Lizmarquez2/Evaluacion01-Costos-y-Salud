@@ -169,7 +169,7 @@ elif menu == "Ejercicio 1":
         with col2:
             tipo = st.selectbox("Tipo de movimiento", ["Ingreso", "Gasto"])
         with col3:
-            valor = st.number_input("Valor ($)", min_value=0.0, step=10.0)
+            valor = st.number_input("Valor (S/.)", min_value=0.0, step=10.0)
             
         submitted = st.form_submit_button("Agregar Movimiento")
         if submitted:
@@ -190,13 +190,18 @@ elif menu == "Ejercicio 1":
         total_gastos = df_mov[df_mov["Tipo"] == "Gasto"]["Valor"].sum()
         saldo_final = total_ingresos - total_gastos
 
-        st.markdown("### 📋 Historial de Movimientos")
-        st.dataframe(df_mov, use_container_width=True)
+        # Formatear valores en la tabla con el prefijo S/.
+        df_mov_display = df_mov.copy()
+        df_mov_display["Valor"] = df_mov_display["Valor"].apply(lambda x: f"S/. {x:,.2f}")
 
+        st.markdown("### 📋 Historial de Movimientos")
+        st.dataframe(df_mov_display, use_container_width=True)
+
+        # Métricas actualizadas con S/. en lugar de $
         col_m1, col_m2, col_m3 = st.columns(3)
-        col_m1.metric("Total Ingresos", f"${total_ingresos:,.2f}")
-        col_m2.metric("Total Gastos", f"${total_gastos:,.2f}")
-        col_m3.metric("Saldo Final", f"${saldo_final:,.2f}")
+        col_m1.metric("Total Ingresos", f"S/. {total_ingresos:,.2f}")
+        col_m2.metric("Total Gastos", f"S/. {total_gastos:,.2f}")
+        col_m3.metric("Saldo Final", f"S/. {saldo_final:,.2f}")
 
         if saldo_final >= 0:
             st.success("✅ El flujo de caja está **a favor**.")
