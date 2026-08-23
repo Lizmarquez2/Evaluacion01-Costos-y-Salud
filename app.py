@@ -302,7 +302,7 @@ elif menu == "Ejercicio 2":
 elif menu == "Ejercicio 3":
     st.title("⚙️ Ejercicio 3: Funciones desde Librería Externa")
     st.markdown("""
-    Ejecución de funciones modulares con visualización limpia de resultados ejecutivos.
+    Ejecución de funciones modulares con visualización limpia de resultados ejecutivos expresados en Soles (S/.).
     """)
 
     if "historico_func" not in st.session_state:
@@ -317,9 +317,9 @@ elif menu == "Ejercicio 3":
     
     if funcion_seleccionada == "calcular_costo_unitario_total":
         st.subheader("Parámetros: Costo Unitario Total")
-        mat = st.number_input("Costo de Materiales ($)", min_value=0.0, value=1500.0)
-        mo = st.number_input("Costo de Mano de Obra ($)", min_value=0.0, value=3000.0)
-        ci = st.number_input("Costos Indirectos ($)", min_value=0.0, value=500.0)
+        mat = st.number_input("Costo de Materiales (S/.)", min_value=0.0, value=1500.0)
+        mo = st.number_input("Costo de Mano de Obra (S/.)", min_value=0.0, value=3000.0)
+        ci = st.number_input("Costos Indirectos (S/.)", min_value=0.0, value=500.0)
         unidades = st.number_input("Unidades Producidas", min_value=1, value=100)
 
         if st.button("Ejecutar Función"):
@@ -328,21 +328,21 @@ elif menu == "Ejercicio 3":
                 st.success("¡Cálculo ejecutado exitosamente!")
                 
                 col_r1, col_r2 = st.columns(2)
-                col_r1.metric("Costo Total", f"${res.get('costo_total', 0):,.2f}")
-                col_r2.metric("Costo Unitario", f"${res.get('costo_unitario', 0):,.2f}")
+                col_r1.metric("Costo Total", f"S/. {res.get('costo_total', 0):,.2f}")
+                col_r2.metric("Costo Unitario", f"S/. {res.get('costo_unitario', 0):,.2f}")
                 
                 st.session_state.historico_func.append({
                     "Función": funcion_seleccionada,
-                    "Resultado Principal": f"Costo Unitario: ${res.get('costo_unitario', 0):,.2f}"
+                    "Resultado Principal": f"Costo Unitario: S/. {res.get('costo_unitario', 0):,.2f}"
                 })
             except Exception as e:
                 st.error(f"Error en el cálculo: {e}")
 
     elif funcion_seleccionada == "calcular_punto_equilibrio":
         st.subheader("Parámetros: Punto de Equilibrio")
-        cf = st.number_input("Costos Fijos ($)", min_value=0.0, value=5000.0)
-        pu = st.number_input("Precio Unitario ($)", min_value=0.0, value=100.0)
-        cv = st.number_input("Costo Variable Unitario ($)", min_value=0.0, value=40.0)
+        cf = st.number_input("Costos Fijos (S/.)", min_value=0.0, value=5000.0)
+        pu = st.number_input("Precio Unitario (S/.)", min_value=0.0, value=100.0)
+        cv = st.number_input("Costo Variable Unitario (S/.)", min_value=0.0, value=40.0)
 
         if st.button("Ejecutar Función"):
             try:
@@ -350,13 +350,13 @@ elif menu == "Ejercicio 3":
                 st.success("¡Cálculo ejecutado exitosamente!")
                 
                 col_r1, col_r2, col_r3 = st.columns(3)
-                col_r1.metric("Margen Contribución", f"S/.{res.get('margen_contribucion_unitario', 0):,.2f}")
+                col_r1.metric("Margen Contribución", f"S/. {res.get('margen_contribucion_unitario', 0):,.2f}")
                 col_r2.metric("Punto Equilibrio (Unid.)", f"{res.get('punto_equilibrio_unidades', 0):,.2f}")
-                col_r3.metric("Punto Equilibrio (Ventas)", f"S/.{res.get('punto_equilibrio_ventas', 0):,.2f}")
+                col_r3.metric("Punto Equilibrio (Ventas)", f"S/. {res.get('punto_equilibrio_ventas', 0):,.2f}")
                 
                 st.session_state.historico_func.append({
                     "Función": funcion_seleccionada,
-                    "Resultado Principal": f"Punto de Equilibrio en Unidades: {res.get('punto_equilibrio_unidades', 0):,.2f}"
+                    "Resultado Principal": f"Punto de Equilibrio en Ventas: S/. {res.get('punto_equilibrio_ventas', 0):,.2f}"
                 })
             except Exception as e:
                 st.error(f"Error en el cálculo: {e}")
