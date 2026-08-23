@@ -10,7 +10,7 @@ import libreria_clases_proyecto1 as lib_class
 # CONFIGURACIÓN DE LA PÁGINA
 # =========================================================
 st.set_page_config(
-    page_title="Proyecto 1 - Python Fundamentals",
+    page_title="Evaluación Modulo 01 - Fundamentos de Programación",
     page_icon="📊",
     layout="wide"
 )
@@ -30,7 +30,7 @@ menu = st.sidebar.selectbox(
 # =========================================================
 if menu == "Home":
     st.title("📊 Especialización en Python for Analytics")
-    st.subheader("Módulo 1 - Python Fundamentals | Proyecto Aplicado en Streamlit")
+    st.subheader("Modulo 1 - Fundamentos de Programación | Proyecto Aplicado en Streamlit")
     
     st.markdown("---")
     
@@ -39,8 +39,7 @@ if menu == "Home":
         st.markdown("""
         ### Descripción del Proyecto
         Esta aplicación interactiva integra los conceptos fundamentales aprendidos durante el módulo, 
-        incluyendo variables, estructuras de datos, control de flujo, funciones, programación funcional 
-        y Programación Orientada a Objetos (POO). 
+        incluyendo variables, estructuras de datos, control de flujo, funciones y programación.
         
         El sistema permite simular operaciones prácticas organizadas en módulos interactivos diseñados 
         para facilitar el análisis de datos y la toma de decisiones.
@@ -51,7 +50,7 @@ if menu == "Home":
         * **Python:** Lenguaje principal de programación.
         * **Streamlit:** Framework para la creación de aplicaciones web interactivas.
         * **NumPy & Pandas:** Manipulación, estructuración y análisis de arreglos y DataFrames.
-        * **Git & GitHub:** Control de versiones y despliegue en la nube (`Streamlit Cloud`).
+        * **GitHub:** Control de versiones y despliegue en la nube (`Streamlit Cloud`).
         """)
         
     with col2:
