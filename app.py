@@ -57,8 +57,7 @@ if menu == "Home":
     with col2:
         st.info("""
         **Información General:**
-        * **Estudiante:** Colaborador (Área de Costos y Presupuestos)
-        * **Módulo:** Python Fundamentals
+        * **Alumna:** Liz E. Marquez Panuera
         * **Año:** 2026
         """)
 
