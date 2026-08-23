@@ -30,7 +30,7 @@ menu = st.sidebar.selectbox(
 # =========================================================
 if menu == "Home":
     st.title("📊 Ev_01 Especialización en Python for Analytics")
-    st.subheader("Proyecto aplicando Python Fundamentals")
+    st.subheader("Proyecto - Aplicando Python Fundamentals")
     
     st.markdown("---")
     
