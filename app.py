@@ -18,7 +18,7 @@ st.set_page_config(
 # =========================================================
 # MENÚ DE NAVEGACIÓN LATERAL
 # =========================================================
-st.sidebar.image("https://img.icons8.com/color/96/python.png", width=80)
+st.sidebar.image("DMC Logo.png", width=80)
 st.sidebar.title("Menú de Navegación")
 menu = st.sidebar.selectbox(
     "Seleccione una sección:",
